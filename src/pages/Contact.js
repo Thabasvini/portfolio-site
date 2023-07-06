@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography, Container, TextField, Button, Grid, ThemeProvider, createTheme } from '@mui/material';
-import { Email } from '@mui/icons-material';
-import {styled} from '@mui/system'
+import { Typography, Container, TextField, Button, Grid, ThemeProvider, createTheme, Link } from '@mui/material';
+import { Email, GitHub } from '@mui/icons-material';
+import { styled } from '@mui/system';
 
 const theme = createTheme({
   palette: {
@@ -20,6 +20,17 @@ const theme = createTheme({
   },
 });
 
+const GitHubLink = styled(Link)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: theme.palette.text.primary,
+  textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+}));
+
 const FooterContainer = styled('footer')`
   background-color: ${theme.palette.primary.main};
   color: ${theme.palette.text.primary};
@@ -32,15 +43,17 @@ const FooterContainer = styled('footer')`
   width: 100%;
 `;
 
-
 const GmailIcon = styled(Email)`
   margin-right: 8px;
 `;
 
 const handleGmailClick = () => {
-  window.location.href = `mailto:your-email@example.com`;
+  window.location.href = `mailto:thabu.chittu@gmail.com`;
 };
 
+const handleGitHubClick = () => {
+  window.open('https://github.com/Thabasvini', '_blank');
+};
 
 const ContactPage = () => {
   const handleSubmit = (e) => {
@@ -57,34 +70,26 @@ const ContactPage = () => {
     })
       .then((response) => {
         if (response.ok) {
-          // Successful form submission
-          // You can display a success message or redirect the user to a thank you page
           console.log('Form submitted successfully');
-          // Display a success message to the user
           alert('Thank you for your message! We will get back to you soon.');
-          // Clear the form fields
           form.reset();
         } else {
-          // Error in form submission
-          // You can display an error message to the user
           console.log('Form submission failed');
-          // Display an error message to the user
           alert('Oops! Something went wrong. Please try again later.');
         }
       })
       .catch((error) => {
-        // Error in form submission
-        // You can display an error message to the user
         console.log('Form submission error:', error);
-        // Display an error message to the user
         alert('Oops! Something went wrong. Please try again later.');
       });
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="sm" style={{ marginTop: theme.spacing(13),}}>
-        <Typography variant="h4" color="primary" align="center" gutterBottom>Contact Me</Typography>
+      <Container maxWidth="sm" style={{ marginTop: theme.spacing(13) }}>
+        <Typography variant="h4" color="primary" align="center" gutterBottom>
+          Contact Me
+        </Typography>
         <Typography variant="body1" color="textPrimary" align="center" gutterBottom>
           Have a question or want to work together? Fill out the form below and I'll get back to you as soon as possible.
         </Typography>
@@ -113,7 +118,7 @@ const ContactPage = () => {
                 variant="outlined"
                 color="primary"
                 InputLabelProps={{
-                  style: { color: theme.palette.text.primary },
+         style: { color: theme.palette.text.primary },
                 }}
               />
             </Grid>
@@ -143,8 +148,11 @@ const ContactPage = () => {
       <FooterContainer>
         <GmailIcon onClick={handleGmailClick} />
         <Typography variant="body2">
-          Email: <a href="mailto:thabu.chittu@gmail.com">thabu.chittu@gmail.com</a>
+        Email: <a href="mailto:thabu.chittu@gmail.com" style={{ color: '#FFFFFF' }}>thabu.chittu@gmail.com</a>
         </Typography>
+        <GitHubLink href="https://github.com/Thabasvini" target="_blank" rel="noopener" onClick={handleGitHubClick}>
+          <GitHub sx={{ marginLeft: '0.5rem' }} />
+        </GitHubLink>
       </FooterContainer>
     </ThemeProvider>
   );
