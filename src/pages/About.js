@@ -72,7 +72,7 @@ const About = () => {
 
   const experience = [
     { role: 'Front-end Developer', years: '4+' },
-    { role: 'Founder', years: '3' },
+    
   ];
 
   const achievements = [
@@ -119,7 +119,7 @@ const About = () => {
       <SectionTitle style={{color: theme.palette.primary.main}}>Experience</SectionTitle>
 {experience.map(({ role, years }, index) => (
   <Typography variant="body1" component="div" key={index}>
-    {`${role}: ${years} years of experience`}
+    {`${role}: ${years} years`}
   </Typography>
   
 ))}
