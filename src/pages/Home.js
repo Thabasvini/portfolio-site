@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Typography, Container, Grid, Button, ThemeProvider, createTheme } from '@mui/material';
 import { styled } from '@mui/system';
 import lottie from 'lottie-web';
-import resume from './resume.pdf';
+//import resume from './resume.pdf';
 import animation from '../static/homepage.json';
 
 const Title = styled(Typography)(({ theme }) => ({
